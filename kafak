@@ -5,6 +5,8 @@ tar -zxvf kafka_2.12-3.4.1.tgz
 
 cd kafka_2.12-3.4.1
 
+nohup bin/zookeeper-server-start.sh config/zookeeper.properties >> 1.log & 
+
 nohup bin/kafka-server-start.sh config/server.properties >> 2.log & 
 
 
