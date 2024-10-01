@@ -1,0 +1,26 @@
+https://archive.apache.org/dist/kafka/3.4.1/kafka_2.12-3.4.1.tgz
+
+tar -zxvf kafka_2.12-3.4.1.tgz
+
+
+cd kafka_2.12-3.4.1
+
+nohup bin/kafka-server-start.sh config/server.properties >> 2.log & 
+
+
+
+bin/kafka-topics.sh --create --topic test-topic --bootstrap-server 172.31.14.25:9092 --replication-factor 1 --partitions 4
+
+
+
+bin/kafka-topics.sh --list --zookeeper 172.31.14.25:2181
+or
+bin/kafka-topics.sh --list --bootstrap-server 172.31.14.25:9092 
+
+
+bin/kafka-console-producer.sh --broker-list 172.31.14.25:9092 --topic mytopic
+>This is a message
+>This is another message
+
+
+bin/kafka-console-consumer.sh --bootstrap-server 172.31.14.25:9092  --topic test-topic --from-beginning
